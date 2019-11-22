@@ -26,10 +26,20 @@ Building on Unix with gcc or clang:
 % make install
 
 Building on Windows with Microsoft Visual Studio:
+修改D:\Qt\5.6.3-xp\msvc2015-10.0.10240.0\lib\cmake\Qt5Core\Qt5CoreConfig.cmake第51行
+set(Qt5Core_PRIVATE_INCLUDE_DIRS "")
+改为
+set(Qt5Core_PRIVATE_INCLUDE_DIRS
+        "${_qt5Core_install_prefix}/include/QtCore/5.6.3"
+        "${_qt5Core_install_prefix}/include/QtCore/5.6.3/QtCore"
+    )
 From a command prompt for the version of MSVC you want to use
+$ e:\nut\vc-xp.bat
+$ set Qt5_DIR=D:\Qt\5.6.3-xp\msvc2015-10.0.10240.0\lib\cmake\Qt5
+$ set Qt5Core_DIR=D:\Qt\5.6.3-xp\msvc2015-10.0.10240.0\lib\cmake\Qt5Core
 % mkdir build
 % cd build
-% cmake -G "NMake Makefiles" ..
+% cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX=D:\1win\qt\GammaRay ..
 % nmake
 % nmake install
 
